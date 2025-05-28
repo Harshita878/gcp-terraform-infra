@@ -52,3 +52,14 @@ resource "google_compute_instance" "default" {
     scopes = ["cloud-platform"]
   }
 }
+
+resource "google_compute_disk" "datadisk" {
+  name  = "test-disk"
+  type  = "pd-standard"
+  zone  = "us-central1-a"
+}
+
+resource "google_compute_attached_disk" "datadisk-attach" {
+  disk     = google_compute_disk.datadisk.id
+  instance = google_compute_instance.default.id
+}

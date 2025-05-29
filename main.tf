@@ -18,3 +18,7 @@ module "network" {
 module "cloudsql" {
     source = "./cloudsql"
 }
+
+module "bucket" {
+    source = "./bucket"
+}
